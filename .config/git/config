@@ -1,0 +1,9 @@
+[pull]
+	rebase = false
+[user]
+	email = 14792753+wlfgang@users.noreply.github.com
+	name = wlfgang
+[init]
+	defaultBranch = main
+[core]
+	editor = vim
