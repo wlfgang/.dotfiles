@@ -20,6 +20,9 @@ config.colors = {
 config.font = wezterm.font("JetBrains Mono")
 config.font_size = 14.0
 
+-- disable ligatures in most fonts
+config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
+
 -- keys
 config.keys = {
     { key = "RightArrow", mods = "ALT", action = act.ActivateTabRelative(1) },
