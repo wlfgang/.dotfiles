@@ -3,6 +3,9 @@ local wezterm = require("wezterm")
 local act = wezterm.action
 local config = {}
 
+-- shell
+config.default_prog = { "/usr/bin/zsh" }
+
 -- window
 config.window_decorations = "RESIZE"
 
