@@ -25,12 +25,15 @@ config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 
 -- keys
 config.keys = {
+    -- tabs
     { key = "RightArrow", mods = "ALT", action = act.ActivateTabRelative(1) },
     { key = "LeftArrow", mods = "ALT", action = act.ActivateTabRelative(-1) },
     { key = "l", mods = "ALT", action = act.ActivateTabRelative(1) },
     { key = "h", mods = "ALT", action = act.ActivateTabRelative(-1) },
     { key = "Enter", mods = "ALT", action = act.SpawnTab("CurrentPaneDomain") },
     { key = "q", mods = "ALT", action = act.CloseCurrentTab({ confirm = true }) },
+    -- panes
+    { key = "Space", mods = "ALT|CTRL|SHIFT", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
 }
 
 return config
