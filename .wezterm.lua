@@ -14,7 +14,7 @@ config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
 
 -- color scheme
-config.color_scheme = "Github Dark (Gogh)"
+config.color_scheme = "tokyonight_night"
 config.colors = {
     cursor_bg = "#ff0000",
     cursor_fg = "black",
