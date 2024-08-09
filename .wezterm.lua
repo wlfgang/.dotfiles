@@ -18,6 +18,13 @@ config.color_scheme = "tokyonight_night"
 config.colors = {
     cursor_bg = "#ff0000",
     cursor_fg = "black",
+    tab_bar = {
+        -- match tokyonight_night background to reduce clutter
+        inactive_tab = {
+            bg_color = "#1a1b26",
+            fg_color = "#888888",
+        },
+    },
 }
 
 -- font
