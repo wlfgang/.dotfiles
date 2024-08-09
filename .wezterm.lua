@@ -9,6 +9,10 @@ config.default_prog = { "/usr/bin/zsh" }
 -- window
 config.window_decorations = "RESIZE"
 
+-- tab bar
+config.tab_bar_at_bottom = true
+config.use_fancy_tab_bar = false
+
 -- color scheme
 config.color_scheme = "Github Dark (Gogh)"
 config.colors = {
