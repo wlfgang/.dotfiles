@@ -20,6 +20,11 @@ config.window_decorations = "RESIZE"
 config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
 
+-- show active workspace on tab bar
+wezterm.on("update-right-status", function(window, pane)
+    window:set_right_status(window:active_workspace())
+end)
+
 -- color scheme
 config.color_scheme = "tokyonight_night"
 config.colors = {
@@ -46,17 +51,23 @@ config.leader = { key = "Space", mods = "ALT", timeout_milliseconds = 2000 }
 
 -- keys
 config.keys = {
+    -- workspaces
+
+    { key = "w", mods = "ALT", action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }) },
+    { key = "n", mods = "ALT", action = act.SwitchWorkspaceRelative(1) },
+    { key = "p", mods = "ALT", action = act.SwitchWorkspaceRelative(-1) },
+
     -- tabs
+    { key = "t", mods = "ALT", action = act.SpawnTab("CurrentPaneDomain") },
     { key = "RightArrow", mods = "ALT", action = act.ActivateTabRelative(1) },
     { key = "LeftArrow", mods = "ALT", action = act.ActivateTabRelative(-1) },
     { key = "l", mods = "ALT", action = act.ActivateTabRelative(1) },
     { key = "h", mods = "ALT", action = act.ActivateTabRelative(-1) },
-    { key = "Enter", mods = "ALT", action = act.SpawnTab("CurrentPaneDomain") },
     { key = "q", mods = "ALT", action = act.CloseCurrentTab({ confirm = true }) },
 
     -- split panes
-    { key = "|", mods = "SHIFT|LEADER", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-    { key = "-", mods = "LEADER", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
+    { key = "Enter", mods = "LEADER", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+    { key = "Space", mods = "LEADER", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
 
     -- move panes
     { key = "h", mods = "LEADER", action = act.ActivatePaneDirection("Left") },
@@ -65,10 +76,10 @@ config.keys = {
     { key = "j", mods = "LEADER", action = act.ActivatePaneDirection("Down") },
 
     -- resize panes
-    { key = "h", mods = "ALT|LEADER", action = act.AdjustPaneSize({ "Left", 5 }) },
-    { key = "l", mods = "ALT|LEADER", action = act.AdjustPaneSize({ "Right", 5 }) },
-    { key = "k", mods = "ALT|LEADER", action = act.AdjustPaneSize({ "Up", 5 }) },
-    { key = "j", mods = "ALT|LEADER", action = act.AdjustPaneSize({ "Down", 5 }) },
+    { key = "h", mods = "CTRL", action = act.AdjustPaneSize({ "Left", 5 }) },
+    { key = "l", mods = "CTRL", action = act.AdjustPaneSize({ "Right", 5 }) },
+    { key = "k", mods = "CTRL", action = act.AdjustPaneSize({ "Up", 5 }) },
+    { key = "j", mods = "CTRL", action = act.AdjustPaneSize({ "Down", 5 }) },
 }
 
 return config
