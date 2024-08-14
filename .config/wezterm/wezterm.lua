@@ -3,9 +3,13 @@ local wezterm = require("wezterm")
 local mux = wezterm.mux
 local act = wezterm.action
 local config = {}
+local sshs = require("ssh")
 
 -- shell
 config.default_prog = { "/usr/bin/zsh" }
+
+-- import ssh domains
+sshs.apply_to_config(config)
 
 -- maximize on startup
 wezterm.on("gui-startup", function(cmd)
