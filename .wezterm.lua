@@ -51,12 +51,6 @@ config.leader = { key = "Space", mods = "ALT", timeout_milliseconds = 2000 }
 
 -- keys
 config.keys = {
-    -- workspaces
-
-    { key = "w", mods = "ALT", action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }) },
-    { key = "n", mods = "ALT", action = act.SwitchWorkspaceRelative(1) },
-    { key = "p", mods = "ALT", action = act.SwitchWorkspaceRelative(-1) },
-
     -- tabs
     { key = "t", mods = "ALT", action = act.SpawnTab("CurrentPaneDomain") },
     { key = "RightArrow", mods = "ALT", action = act.ActivateTabRelative(1) },
@@ -80,6 +74,25 @@ config.keys = {
     { key = "l", mods = "CTRL", action = act.AdjustPaneSize({ "Right", 5 }) },
     { key = "k", mods = "CTRL", action = act.AdjustPaneSize({ "Up", 5 }) },
     { key = "j", mods = "CTRL", action = act.AdjustPaneSize({ "Down", 5 }) },
+
+    -- workspaces
+    { key = "w", mods = "ALT", action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }) },
+    { key = "n", mods = "ALT", action = act.SwitchWorkspaceRelative(1) },
+    { key = "p", mods = "ALT", action = act.SwitchWorkspaceRelative(-1) },
+
+    -- rename current workspace
+    {
+        key = "$",
+        mods = "LEADER|SHIFT",
+        action = act.PromptInputLine({
+            description = "Enter new name for workspace",
+            action = wezterm.action_callback(function(window, _, line)
+                if line then
+                    mux.rename_workspace(window:mux_window():get_workspace(), line)
+                end
+            end),
+        }),
+    },
 }
 
 return config
