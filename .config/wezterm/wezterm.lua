@@ -74,10 +74,10 @@ config.keys = {
     { key = "j", mods = "LEADER", action = act.ActivatePaneDirection("Down") },
 
     -- resize panes
-    { key = "h", mods = "CTRL", action = act.AdjustPaneSize({ "Left", 5 }) },
-    { key = "l", mods = "CTRL", action = act.AdjustPaneSize({ "Right", 5 }) },
-    { key = "k", mods = "CTRL", action = act.AdjustPaneSize({ "Up", 5 }) },
-    { key = "j", mods = "CTRL", action = act.AdjustPaneSize({ "Down", 5 }) },
+    { key = "h", mods = "CTRL|ALT", action = act.AdjustPaneSize({ "Left", 5 }) },
+    { key = "l", mods = "CTRL|ALT", action = act.AdjustPaneSize({ "Right", 5 }) },
+    { key = "k", mods = "CTRL|ALT", action = act.AdjustPaneSize({ "Up", 5 }) },
+    { key = "j", mods = "CTRL|ALT", action = act.AdjustPaneSize({ "Down", 5 }) },
 
     -- workspaces
     { key = "w", mods = "ALT", action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }) },
